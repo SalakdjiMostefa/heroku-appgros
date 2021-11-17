@@ -10,17 +10,6 @@ jar {
         )
     }
 }
-task fatJar(type: Jar) {
-    manifest.from jar.manifest
-//    classifier = 'all'
-    from {
-        configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-    with jar
-}
-artifacts {
-    archives fatJar
-}
 
 group = 'com.appgros'
 version = '0.0.1-SNAPSHOT'
@@ -37,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.5.6', ext: 'pom'
+//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.5.6', ext: 'pom'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compileOnly 'org.projectlombok:lombok'
